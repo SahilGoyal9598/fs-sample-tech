@@ -25,6 +25,12 @@ order_details = [{
   'order no': '#200268845',
   'sku': 'KNTR152GREY-L',
   'status': 'Cancelled'
+}, {
+  'id': 5,
+  'unique_id': 123878548056,
+  'order no': '#200268845',
+  'sku': 'MGKS121BLUE-TAILORED',
+  'status': 'Cutting done'
 }]
 
 
