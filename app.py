@@ -19,10 +19,8 @@ def load_orders_from_db():
 @app.route("/")  #home page
 def hello_world():
   orders = load_orders_from_db()
-  
+
   return render_template("home.html", orders=orders)
-
-
 
 
 print(__name__)
