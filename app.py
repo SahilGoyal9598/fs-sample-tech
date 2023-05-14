@@ -1,18 +1,9 @@
 from flask import Flask, render_template
-from database import engine
-from sqlalchemy import text
+from database import load_orders_from_db
 
 app = Flask(__name__)
 
 
-def load_orders_from_db():
-  with engine.connect() as conn:
-    result = conn.execute(text("select * from order_details"))
-
-    orders = []
-    for row in result.all():
-      orders.append(row._mapping)
-  return orders
 
 
 # decorator in python "@"
