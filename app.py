@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template
 from database import engine
 from sqlalchemy import text
 
@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 def load_orders_from_db():
   with engine.connect() as conn:
-  result = conn.execute(text("select * from order_details"))
+    result = conn.execute(text("select * from order_details"))
 
-  orders = []
-  for row in result.all():
-    orders.append(row._mapping)
+    orders = []
+    for row in result.all():
+      orders.append(row._mapping)
   return orders
 
 
@@ -23,9 +23,6 @@ def hello_world():
   return render_template("home.html", orders=orders)
 
 
-@app.route("/orders")  # orders page
-def orders():
-  return jsonify(order_details)
 
 
 print(__name__)
