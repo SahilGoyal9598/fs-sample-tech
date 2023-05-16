@@ -25,6 +25,7 @@ tr:hover {background-color: #D6EEEE;}
             <th>status</th>
             <th>Action</th>
             <th>Remarks</th>
+            <th>Cancel</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@ tr:hover {background-color: #D6EEEE;}
             <td>{{ order['tstatus'] }}</td>
             <td>{{ order['faction'] }}</td>
             <td>{{ order['remarks'] }}</td>
+            <td><button class="editbtn">cancel</button></td>
           </tr>
           
           {% endfor %}

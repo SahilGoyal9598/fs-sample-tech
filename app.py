@@ -1,9 +1,7 @@
-from flask import Flask, render_template
-from database import load_orders_from_db
+from flask import Flask, render_template, jsonify
+from database import load_orders_from_db, load_order_from_db
 
 app = Flask(__name__)
-
-
 
 
 # decorator in python "@"
@@ -14,6 +12,11 @@ def hello_world():
   return render_template("home.html", orders=orders)
 
 
-print(__name__)
+@app.route("/cancel/<id>")
+def show_order(id):
+  order1 = load_order_from_db(id)
+  return jsonify(order1)
+
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
