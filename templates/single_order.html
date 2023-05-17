@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+
+
 <style>
 table {
   border-collapse: collapse;
@@ -37,10 +40,13 @@ tr:hover {background-color: #D6EEEE;}
             <td>{{ order['tstatus'] }}</td>
             <td>{{ order['faction'] }}</td>
             <td>{{ order['remarks'] }}</td>
-            <td><a href="/cancel/{{order['id']}}" type="button" class="btn btn-outline-primary float-right align-middle">Cancel</a></td>
+            <td><button class="editbtn">cancel</button></td>
           </tr>
+       
           
           {% endfor %}
+
+          
         </tbody>
       </table>
 

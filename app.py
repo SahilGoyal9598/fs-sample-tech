@@ -14,8 +14,10 @@ def hello_world():
 
 @app.route("/cancel/<id>")
 def show_order(id):
-  order1 = load_order_from_db(id)
-  return jsonify(order1)
+  orders = load_order_from_db(id)
+  if not orders:
+    return "Not found", 404
+  return render_template("single_order.html", orders=orders)
 
 
 if __name__ == '__main__':
