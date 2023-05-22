@@ -1,0 +1,11 @@
+<h4>Order cancel</h4>
+{% for order in orders %}
+<form action="/cancel/{{order['id']}}/apply", method="post">
+  <label>Unique id </label><br>
+<input type="text" name="unique_id" placeholder="123456778">
+  <br>
+
+  <input type="submit">
+{% endfor %}
+  
+</form>

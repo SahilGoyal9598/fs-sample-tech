@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  
+  <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 2.4px solid #DDD;
+  
+}
+
+tr:hover {background-color: #D6EEEE;}
+</style>
+</head>
+<body>
+  <table border-collapse: collapse;
+  width: 200%;>
+  <caption>Order details</caption>
+        <thead>
+          <tr>
+            <th>sale order item code</th>
+            <th>Order number</th>
+            <th>Order date</th>
+            <th>Order Processed At</th>
+            <th>Status</th>
+            <th>Statua date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for orders in all_order %}
+          <tr>
+            <td>{{ orders['unique_id'] }}</td>
+            <td>{{ orders['order_no'] }}</td>
+            <td>{{ orders['order_date'] }}</td>
+            <td>{{ orders['created_at'] }}</td>
+            <td>{{ orders['order_status'] }}</td>
+            <td>{{ orders['updated_at'] }}</td>
+            
+          </tr>
+          
+          {% endfor %}
+        </tbody>
+      </table>
+  <button class="download-button" onclick="downloadCSV()">Download as CSV</button>
+
+  <script>
+    function downloadCSV() {
+      // retrieve data table
+      const table = document.querySelector('table')
+      const rows = Array.from(table.querySelectorAll('tbody tr'))
+      // Prepare CSV contect
+      const csvContent = rows.map(row => Array.from(row.children).map(cell => cell.textContent).join(',')).join('/n')
+      const blob = new Blob([csvContent], {type:'text/csv'})
+      const url = URL.createObjectURL(blob)
+
+      // create temporary link and trigger download
+      const link = document.createelement('a')
+      link.href= url
+      link.download = 'table_data.csv'
+      link.click()
+
+      // clean up
+      URL.revokeObjectURL(url)
+      
+    }
+  </script>
+  
+</body>
+</html>
